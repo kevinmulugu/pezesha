@@ -47,4 +47,14 @@ class Loan extends Model
     {
         return $this->hasMany(Payment::class);
     }
+
+    /**
+     * Format the amount
+     * @param $value
+     * @return string
+     */
+    public function getAmountAttribute($value)
+    {
+        return number_format($value, 2);
+    }
 }

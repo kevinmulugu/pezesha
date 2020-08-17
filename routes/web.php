@@ -28,7 +28,9 @@ Route::middleware(['auth'])->group(function() {
     Route::resource('customers', 'CustomerController')->names('customers');
     Route::get('customers-json', 'CustomerController@json')->name('customers.json');
     Route::resource('loans', 'LoanController')->names('loans');
+    Route::get('loans-json', 'LoanController@json')->name('loans.json');
     Route::resource('payments', 'PaymentController')->names('payments');
     Route::resource('transactions', 'TransactionController')->names('transactions');
-    Route::resource('fundings', 'LoanFundingController')->names('transactions');
+    Route::get('transactions-json', 'TransactionController@json')->name('transactions.json');
+    Route::resource('fundings', 'LoanFundingController')->names('fundings');
 });

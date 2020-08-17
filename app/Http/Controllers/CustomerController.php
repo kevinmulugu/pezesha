@@ -13,7 +13,8 @@ class CustomerController extends Controller
      */
     public function json()
     {
-        return response()->json(Customer::all(), 200);
+        $customers = Customer::with('loans')->get();
+        return response()->json($customers, 200);
     }
     /**
      * Display a listing of the resource.

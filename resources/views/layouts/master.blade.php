@@ -40,8 +40,8 @@
         <div class="list-group list-group-flush">
             <a href="{{ route('home') }}" class="list-group-item list-group-item-action bg-light">Dashboard</a>
             <a href="{{ route('customers.index') }}" class="list-group-item list-group-item-action bg-light">Customers</a>
-            <a href="#" class="list-group-item list-group-item-action bg-light">Loans</a>
-            <a href="#" class="list-group-item list-group-item-action bg-light">Payments</a>
+            <a href="{{ route('loans.index') }}" class="list-group-item list-group-item-action bg-light">Loans</a>
+            <a href="{{ route('transactions.index') }}" class="list-group-item list-group-item-action bg-light">Transactions</a>
         </div>
     </div>
     <!-- /#sidebar-wrapper -->

@@ -8,13 +8,22 @@ use Illuminate\Http\Request;
 class LoanController extends Controller
 {
     /**
+     * Returns loans with their customer, payments and funding information
+     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     */
+    public function json()
+    {
+        return Loan::with(['customer', 'payments.transaction', 'loanFundings'])->get();
+    }
+
+    /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        //
+        return view('loans.index');
     }
 
     /**

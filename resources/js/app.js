@@ -20,6 +20,8 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('customers-component', require('./components/pezesha/Customers').default);
+Vue.component('loans-component', require('./components/pezesha/Loans').default);
+Vue.component('transactions-component', require('./components/pezesha/Transactions').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

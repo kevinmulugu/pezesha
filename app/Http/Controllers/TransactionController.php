@@ -8,13 +8,22 @@ use Illuminate\Http\Request;
 class TransactionController extends Controller
 {
     /**
+     * Returns transactions made by customers in JSON format
+     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     */
+    public function json()
+    {
+        return Transaction::with('customer')->get();
+    }
+
+    /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        //
+        return view('transactions.index');
     }
 
     /**

@@ -48,6 +48,9 @@
                                         </a>
                                         <a class="text-danger" href="#" @click.prevent="destroy(customer)">
                                             <i class="fa fa-trash-o"></i> Delete
+                                        </a> &nbsp;
+                                        <a class="text-dark" href="#" @click.prevent="showSelectedCustomerLoansModal(customer.loans)">
+                                            <i class="fa fa-history"></i> Loans
                                         </a>
                                     </span>
                                 </div>
@@ -108,6 +111,47 @@
                 </div>
             </div>
         </div>
+
+        <!-- Customer Loans Modal     -->
+        <div class="modal fade" id="loansModal" tabindex="-1" role="dialog" aria-labelledby="loansModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="loansModalLabel">Customer Loans</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="list-group">
+                            <li
+                                v-if="selectedCustomerLoans.length > 0"
+                                class="list-group-item">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>Amount</th>
+                                            <th>Status</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr v-for="loan in selectedCustomerLoans" :key="loan.id">
+                                            <td>{{ loan.amount }}</td>
+                                            <td>{{ loan.status }}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </li>
+                            <li v-if="selectedCustomerLoans.length === 0" class="list-group-item list-group-item-action list-group-item-warning">
+                                No Loans found.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 </template>
 
@@ -133,6 +177,7 @@
                     type: undefined,
                     name: undefined,
                 },
+                selectedCustomerLoans: []
             }
         },
         mounted() {
@@ -148,6 +193,16 @@
                 this.editCustomerForm.id = customer.id;
                 $('#editCustomerModal').modal('show');
             },
+
+            /**
+             * Shows loans modal for the selected modal
+             * @param loans
+             */
+            showSelectedCustomerLoansModal(loans) {
+                this.selectedCustomerLoans = loans;
+                $('#loansModal').modal('show');
+            },
+
             /**
              * Loads Customers
              */

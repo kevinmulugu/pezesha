@@ -29,4 +29,14 @@ class Transaction extends Model
     {
         return $this->belongsTo(Customer::class);
     }
+
+    /**
+     * Format the amount
+     * @param $value
+     * @return string
+     */
+    public function getAmountAttribute($value)
+    {
+        return number_format($value, 2);
+    }
 }
