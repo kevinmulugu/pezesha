@@ -17,16 +17,14 @@
     <script src="https://use.fontawesome.com/186d66fd50.js"></script>
 
     <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">
     <style>
         html, body {
             font-family: 'Baloo Da 2', cursive;
             background-color: #F8F8FF;
         }
     </style>
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">
 
 </head>
 
