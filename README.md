@@ -5,7 +5,7 @@ Pezesha Laravel Web App based on the following ER Diagram
 ![ER Diagram](./screenshots/er-diagram.png).
 
 #### Demo
-- [Click here to view demo](https://104.248.33.207)
+- [Click here to view demo](http://104.248.33.207)
 - email: kevinmulugu@gmail.com
 - password: password
 
