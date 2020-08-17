@@ -11,7 +11,7 @@ Pezesha Laravel Web App based on the following ER Diagram
 
 ### INSTALLATION GUIDE
 1. Clone the project
-`git clone https://github.com/mulugu/laravel-vuejs-todolist.git`
+`git clone https://github.com/mulugu/pezesha.git`
 1. ``cd`` to the project and run ``composer install`` on the terminal to install php dependencies
 1. copy the `.env-example` file to `.env` file 
 1. Create a Mysql database and edit the ``.env`` to reflect your connections as follows:
