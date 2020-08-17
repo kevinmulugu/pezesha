@@ -29,4 +29,14 @@ class LoanFunding extends Model
     {
         return $this->belongsTo(Loan::class);
     }
+
+    /**
+     * Format the amount
+     * @param $value
+     * @return string
+     */
+    public function getAmountAttribute($value)
+    {
+        return number_format($value, 2);
+    }
 }
