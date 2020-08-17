@@ -22,6 +22,15 @@ class Customer extends Model
     ];
 
     /**
+     * The attributes that should be filled for arrays.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'type',
+    ];
+
+    /**
      * Finds loans for this customer.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

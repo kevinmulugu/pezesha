@@ -14,9 +14,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+/**
+ * Define a routes protected by the 'auth' middleware.
+ * These routes are authenticated
+ */
+Route::middleware(['auth'])->group(function() {
+    Route::get('home', 'HomeController@index')->name('home');
+    Route::resource('customers', 'CustomerController')->names('customers');
+    Route::get('customers-json', 'CustomerController@json')->name('customers.json');
+    Route::resource('loans', 'LoanController')->names('loans');
+    Route::resource('payments', 'PaymentController')->names('payments');
+    Route::resource('transactions', 'TransactionController')->names('transactions');
+    Route::resource('fundings', 'LoanFundingController')->names('transactions');
+});

@@ -8,13 +8,21 @@ use Illuminate\Http\Request;
 class CustomerController extends Controller
 {
     /**
+     * Returns Customers List in JSON
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function json()
+    {
+        return response()->json(Customer::all(), 200);
+    }
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        return view('customers.index');
     }
 
     /**
@@ -35,7 +43,15 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+           'name' => [ 'required', 'string', 'min:5', 'max:45'],
+           'type' => [ 'required', 'string', 'min:5', 'max:45'],
+        ]);
+
+        return Customer::create([
+           'name' => $request->name,
+           'type' => $request->type,
+        ]);
     }
 
     /**
@@ -65,11 +81,21 @@ class CustomerController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Customer  $customer
-     * @return \Illuminate\Http\Response
+     * @return Customer
      */
     public function update(Request $request, Customer $customer)
     {
-        //
+        $this->validate($request, [
+            'name' => [ 'required', 'string', 'min:5', 'max:45'],
+            'type' => [ 'required', 'string', 'min:5', 'max:45'],
+        ]);
+
+        $customer->update([
+            'name' => $request->name,
+            'type' => $request->type,
+        ]);
+
+        return  $customer;
     }
 
     /**
@@ -80,6 +106,8 @@ class CustomerController extends Controller
      */
     public function destroy(Customer $customer)
     {
-        //
+        $customer->delete();
+
+        return response(null, 204);
     }
 }
