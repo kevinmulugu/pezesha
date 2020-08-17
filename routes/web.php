@@ -13,11 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Redirect requests from / to /login
 Route::get('/', function () {
     return redirect()->route('login');
 });
-
-Auth::routes();
+/**
+ * Enable and disable registration for the auth routes.
+ */
+Auth::routes(['register' => false]);
 
 /**
  * Define a routes protected by the 'auth' middleware.
